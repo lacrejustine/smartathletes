@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Tryout Registration &mdash; SmartAthlete &middot; NDMC Rams</title>
+<meta name="description" content="NDMC Rams SmartAthlete tryout registration for A.Y. 2026-2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="rams.css">
+</head>
+<body class="student-body rams-body">
+
+<!-- ============ AMBIENT BACKGROUND (decorative only) ============ -->
+<div class="rams-bg" aria-hidden="true">
+  <span class="rams-bg__marble"></span>
+  <span class="rams-bg__smoke rams-bg__smoke--a"></span>
+  <span class="rams-bg__smoke rams-bg__smoke--b"></span>
+  <span class="rams-bg__rays"></span>
+  <span class="rams-bg__particles"></span>
+  <span class="rams-bg__vignette"></span>
+</div>
+
+<!-- ============ TOP HEADER ============ -->
+<header class="rams-topbar">
+  <div class="rams-topbar__side">
+    <img class="rams-topbar__mark" src="image=logo/RAMS.png" alt="NDMC Rams emblem">
+    <span class="rams-topbar__word">NDMC RAMS</span>
+  </div>
+
+  <div class="rams-topbar__side rams-topbar__side--end">
+    <span class="rams-topbar__motto">Discipline <i>|</i> Builds <i>|</i> Champions</span>
+  </div>
+
+  <span class="rams-badge">
+    <img src="image=logo/RAMS.png" alt="">
+    <span class="rams-badge__text">NDMC<em>Rams</em></span>
+  </span>
+</header>
+
+<!-- ============ THREE-COLUMN STAGE ============ -->
+<div class="rams-stage">
+
+  <!-- ---------- LEFT : NDMC RAMS ---------- -->
+  <aside class="rams-rail rams-rail--left">
+    <div class="rams-crest">
+      <span class="rams-crest__halo" aria-hidden="true"></span>
+      <img class="rams-crest__img" src="image=logo/RAMS.png" alt="Notre Dame of Midsayap College Rams emblem">
+    </div>
+
+    <h1 class="rams-rail__title">SmartAthlete</h1>
+    <p class="rams-rail__sub">Tryout Registration</p>
+    <p class="rams-rail__season">A.Y. 2026&ndash;2027</p>
+
+    <p class="rams-rail__motto">Stronger Athletes.<br>Brighter Futures.</p>
+
+    <p class="rams-rail__foot">Notre Dame of Midsayap College</p>
+  </aside>
+
+  <!-- ---------- CENTER : the existing registration system ---------- -->
+  <main class="rams-center">
+
+    <!-- ---------- TOP CENTRE : headline + REGISTER NOW ---------- -->
+    <section class="rams-hero" aria-labelledby="ramsHeroTitle">
+      <p class="rams-hero__kicker">A.Y. 2026&ndash;2027</p>
+      <h2 class="rams-hero__title" id="ramsHeroTitle">Tryouts Are Open</h2>
+      <p class="rams-hero__lead">
+        Pick your sport, upload your student ID, and submit your registration in a few minutes.
+      </p>
+      <a class="rams-hero__cta" href="#formPanel" id="registerNow">Register Now</a>
+    </section>
+
+    <!-- ---------- REGISTRATION STATUS ---------- -->
+    <div class="reg-status" id="regStatus" aria-live="polite"><!-- injected --></div>
+
+    <!-- Ticking countdown to the deadline -->
+    <p class="reg-countdown" id="regCountdown" aria-live="off" hidden></p>
+
+    <!-- ---------- REGISTRATION CLOSED CARD ---------- -->
+    <section class="panel closed-card" id="closedCard" hidden aria-labelledby="closedCardTitle">
+      <div class="closed-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <h2 id="closedCardTitle">Registration Closed</h2>
+      <p class="closed-lead" id="closedCardLead"></p>
+      <div class="closed-schedule" id="closedCardSchedule"></div>
+    </section>
+
+    <!-- ---------- TRYOUT SCHEDULE ---------- -->
+    <section class="panel schedule-panel" aria-labelledby="scheduleTitle">
+      <div class="panel-head">
+        <div>
+          <h2 id="scheduleTitle">Tryout Schedule</h2>
+          <p class="panel-note">Where and when to report after registration closes.</p>
+        </div>
+      </div>
+      <div id="tryoutSchedule"></div>
+    </section>
+
+    <!-- ---------- REGISTER FORM ---------- -->
+    <section class="panel form-panel" id="formPanel" tabindex="-1" aria-labelledby="formTitle">
+      <div class="panel-head">
+        <div>
+          <h2 id="formTitle">Register for a Sport</h2>
+          <p class="panel-note">All fields marked required must be filled in.</p>
+        </div>
+      </div>
+
+      <form id="regForm" novalidate>
+
+        <!-- Sport Selection -->
+        <div class="field">
+          <label class="field-label" for="rSport">Sport Selection</label>
+          <select id="rSport"><!-- active sports only, filled by script --></select>
+          <span class="field-hint">Choose the sport you are trying out for.</span>
+        </div>
+
+        <p class="modal-schedule" id="formSchedule" hidden></p>
+
+        <!-- Individual Registration Fields -->
+        <div id="individualFields">
+
+          <div class="section-heading">Personal Information</div>
+
+          <div class="field">
+            <label class="field-label" for="rName">Full Name</label>
+            <input id="rName" type="text" placeholder="Juan Dela Cruz" autocomplete="name">
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="rDepartment">Department</label>
+            <select id="rDepartment">
+              <option value="">Choose department</option>
+            </select>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label class="field-label" for="rStudentId">Student Number</label>
+              <input id="rStudentId" type="text" inputmode="numeric" maxlength="12" data-digits-only
+                     placeholder="210134" aria-describedby="rStudentIdHint">
+              <span class="field-hint" id="rStudentIdHint">Digits only, no dash.</span>
+            </div>
+            <div class="field">
+              <label class="field-label" for="rContact">Contact Number <span class="req-mark">required</span></label>
+              <input id="rContact" type="text" inputmode="numeric" maxlength="11" required aria-required="true" data-digits-only
+                     placeholder="09XXXXXXXXX" aria-describedby="rContactHint">
+              <span class="field-hint" id="rContactHint">11 digits starting with 09.</span>
+            </div>
+          </div>
+
+          <div class="section-heading">Contact Information</div>
+
+          <div class="field">
+            <label class="field-label" for="rFacebook">Facebook Account <span class="req-mark">required</span></label>
+            <input id="rFacebook" type="text" required aria-required="true" autocomplete="off"
+                   placeholder="facebook.com/juan.delacruz or your Facebook name">
+            <span class="field-hint">Your Facebook profile link, or the name people can search you by on Facebook.</span>
+          </div>
+
+          <div class="section-heading">Academic Information</div>
+
+          <div class="field-row">
+            <div class="field">
+              <label class="field-label" for="rCourse">Course</label>
+              <input id="rCourse" type="text" placeholder="BS Criminology">
+            </div>
+            <div class="field">
+              <label class="field-label" for="rYear">Year Level</label>
+              <select id="rYear"></select>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ---------- VERIFICATION (student ID photo) ---------- -->
+        <div class="section-heading">Verification</div>
+
+        <div class="field" id="rIdPhotoField">
+          <span class="field-label" id="rIdPhotoLabel">Student ID Photo <span class="req-mark">required</span></span>
+
+          <div class="idzone" id="rIdPhotoZone" data-state="empty"
+               role="group" aria-labelledby="rIdPhotoLabel" aria-describedby="rIdPhotoHint">
+
+            <!-- default state -->
+            <div class="idzone-empty" id="rIdZoneEmpty">
+              <button type="button" class="idzone-drop" id="rIdDropBtn">
+                <span class="idzone-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <path d="M17 8l-5-5-5 5"/><path d="M12 3v13"/>
+                  </svg>
+                </span>
+                <span class="idzone-title">Click to upload or drag and drop your ID here</span>
+                <span class="idzone-sub">Front side of your ID, all text readable</span>
+              </button>
+            </div>
+
+            <!-- chosen state -->
+            <div class="idzone-filled" id="rIdZoneFilled" hidden>
+              <button type="button" class="idzone-thumb-btn" id="rIdThumbBtn" aria-label="View a larger preview of the selected ID photo">
+                <img class="idzone-thumb" id="rIdThumb" alt="Selected student ID photo">
+              </button>
+              <div class="idzone-meta">
+                <span class="idzone-name" id="rIdFileName">&nbsp;</span>
+                <span class="idzone-size" id="rIdFileSize">&nbsp;</span>
+                <span class="idzone-ready">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  Ready to upload
+                </span>
+              </div>
+              <div class="idzone-actions">
+                <button type="button" class="btn btn-secondary btn-sm" id="rIdReplace">Replace</button>
+                <button type="button" class="btn btn-link-danger btn-sm" id="rIdRemove">Remove</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- native picker: kept out of the tab order, the zone/button is the control -->
+          <input type="file" id="rIdPhoto" class="idzone-input" tabindex="-1" aria-hidden="true"
+                 accept="image/png,image/jpeg,image/webp">
+
+          <p class="field-error" id="rIdPhotoError" hidden></p>
+          <span class="field-hint" id="rIdPhotoHint">Upload a clear photo of your school ID. JPG, PNG, or WEBP, max 5 MB.</span>
+        </div>
+
+        <!-- Team Registration (Esports) -->
+        <div id="teamFields" class="team-fields" hidden>
+          <div class="section-heading">Team Information</div>
+
+          <div class="field">
+            <label class="field-label" for="rTeamName">Team Name</label>
+            <input id="rTeamName" type="text" maxlength="60" placeholder="e.g. NDMC Phoenix">
+            <span class="field-hint">Enter a team name and at least 5 student members. A 6th member is optional.</span>
+          </div>
+          <div class="team-member-list" id="teamMemberList"></div>
+        </div>
+
+        <div class="form-actions">
+          <p class="field-hint" id="formLockNote" hidden></p>
+          <button type="submit" class="btn btn-primary btn-lg w-full" id="regSubmit">Submit Registration</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- ---------- CONFIRMATION ---------- -->
+    <section class="panel confirm-panel" id="confirmPanel" tabindex="-1" hidden aria-live="polite" aria-labelledby="confirmTitle">
+      <div class="panel-head">
+        <div>
+          <h2 id="confirmTitle">Registration Received</h2>
+          <p class="panel-note">Screenshot this reference number and bring it to the tryout.</p>
+        </div>
+      </div>
+      <div class="confirm-body" id="confirmBody"></div>
+      <div class="btn-row" style="margin-top: var(--space-5);">
+        <button type="button" class="btn btn-secondary" id="btnRegisterAnother">Register Another Sport</button>
+        <button type="button" class="btn btn-secondary" id="btnPrintRef">Print / Save</button>
+      </div>
+    </section>
+
+    <!-- ---------- LOOKUP ---------- -->
+    <section class="panel" aria-labelledby="lookupTitle">
+      <div class="panel-head">
+        <div>
+          <h2 id="lookupTitle">Check My Registration</h2>
+          <p class="panel-note">Enter your student number, or your team name for esports.</p>
+        </div>
+      </div>
+      <form id="lookupForm" class="lookup-form">
+        <input type="search" id="lookupQuery" inputmode="numeric" placeholder="210134 or NDMC Phoenix" aria-label="Student number or team name">
+        <button type="submit" class="btn btn-primary">Check</button>
+      </form>
+      <div id="lookupResult" aria-live="polite"></div>
+    </section>
+
+    <footer class="student-foot">
+      <p>SmartAthlete &middot; Notre Dame of Midsayap College</p>
+      <p>Results are posted after the tryouts. Check back for your status.</p>
+    </footer>
+
+  </main>
+
+  <!-- ---------- RIGHT : SIX COLLEGE LOGOS ---------- -->
+  <aside class="rams-rail rams-rail--right">
+    <h2 class="rams-rail__heading">Colleges</h2>
+
+    <ul class="rams-colleges">
+      <li class="rams-college">
+        <img src="image=logo/transparent/CITE.png" alt="College of Information Technology and Engineering seal" loading="lazy">
+        <span class="rams-college__name">CITE</span>
+      </li>
+      <li class="rams-college">
+        <img src="image=logo/transparent/CBA.png" alt="College of Business and Accountancy seal" loading="lazy">
+        <span class="rams-college__name">CBA</span>
+      </li>
+      <li class="rams-college">
+        <img src="image=logo/transparent/N.png" alt="College of Nursing seal" loading="lazy">
+        <span class="rams-college__name">CN</span>
+      </li>
+      <li class="rams-college">
+        <img src="image=logo/transparent/CED.png" alt="College of Education seal" loading="lazy">
+        <span class="rams-college__name">CED</span>
+      </li>
+      <li class="rams-college">
+        <img src="image=logo/transparent/CCJE.png" alt="College of Criminal Justice Education seal" loading="lazy">
+        <span class="rams-college__name">CCJE</span>
+      </li>
+      <li class="rams-college">
+        <img src="image=logo/transparent/CAS.png" alt="College of Arts and Sciences seal" loading="lazy">
+        <span class="rams-college__name">CAS</span>
+      </li>
+    </ul>
+
+    <p class="rams-family">
+      <span>One Team</span>
+      <span>One Family</span>
+      <strong>NDMC Rams</strong>
+    </p>
+  </aside>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Large preview of the chosen ID photo (student side) -->
+<div class="modal-veil" id="idPhotoVeil">
+  <div class="modal" id="idPhotoModal"></div>
+</div>
+
+<script src="common.js"></script>
+<script src="idphoto.js"></script>
+<script src="register.js"></script>
+</body>
+</html>

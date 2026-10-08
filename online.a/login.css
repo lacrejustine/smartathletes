@@ -1,0 +1,79 @@
+/* ==========================================================
+   SmartAthlete — Admin Login Page (login.html)
+   Page chrome comes from register.css; this sheet is the
+   sign-in card and the deployment note only.
+   ========================================================== */
+
+.login-main {
+  max-width: 520px;
+  padding-top: var(--s10);
+}
+
+.login-panel { padding: var(--s8) var(--s6) var(--s6); text-align: center; }
+
+.login-mark {
+  display: flex; align-items: center; justify-content: center;
+  width: 56px; height: 56px; margin: 0 auto var(--s5);
+  background: var(--primary); color: var(--white);
+  border-radius: var(--r-lg); box-shadow: var(--sh-md);
+}
+.login-mark svg { width: 24px; height: 24px; }
+
+.login-panel h1 { margin: 0 0 var(--s2); font-size: 1.5rem; font-weight: 700; }
+.login-panel .sub {
+  margin: 0 auto var(--s6); max-width: 44ch;
+  font-size: 0.875rem; line-height: 1.6; color: var(--ink-2);
+  text-align: left;
+}
+
+.login-form { text-align: left; }
+.login-submit { width: 100%; justify-content: center; padding: 12px 20px; }
+
+.login-error {
+  display: flex; align-items: flex-start; gap: var(--s2);
+  margin: 0 0 var(--s4); padding: var(--s3) var(--s4);
+  font-size: 0.875rem; color: var(--st-notselected);
+  background: var(--st-notselected-bg);
+  border: 1px solid #F2C9C9; border-left: 4px solid var(--st-notselected);
+  border-radius: var(--r);
+}
+
+.login-divider {
+  display: flex; align-items: center; gap: var(--s4);
+  margin: var(--s6) 0 var(--s5);
+  font-size: 0.6875rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3);
+}
+.login-divider::before, .login-divider::after {
+  content: ""; flex: 1; height: 1px; background: var(--border);
+}
+
+.login-demo[hidden] { display: none; }
+.login-demo-note { margin: var(--s3) 0 0; font-size: 0.8125rem; color: var(--ink-3); }
+#btnDemo { border-style: solid; }
+
+.login-alt { margin: var(--s6) 0 0; font-size: 0.875rem; color: var(--ink-2); }
+
+.login-cred-hint {
+  margin: var(--s5) 0 0; padding-top: var(--s4);
+  border-top: 1px solid var(--border);
+  font-size: 0.8125rem; color: var(--ink-3);
+}
+.login-cred-hint code, .security-body code {
+  padding: 2px 6px; font-size: 0.8125rem;
+  color: var(--primary); background: var(--bg-hover); border-radius: var(--r-sm);
+}
+
+/* ================= DEPLOYMENT NOTE ================= */
+.security-note { text-align: left; margin-top: var(--s5); }
+.security-body { padding: var(--s6); }
+.security-body p { margin: 0 0 var(--s4); font-size: 0.875rem; line-height: 1.6; color: var(--ink-2); }
+.security-body ul { margin: 0; padding-left: var(--s5); display: flex; flex-direction: column; gap: var(--s2); }
+.security-body li { font-size: 0.875rem; line-height: 1.55; color: var(--ink-2); }
+.security-body b { color: var(--ink); }
+
+@media (max-width: 640px) {
+  .login-main { padding-top: var(--s6); }
+  .login-panel { padding: var(--s6) var(--s4) var(--s5); }
+  .security-body { padding: var(--s4); }
+}

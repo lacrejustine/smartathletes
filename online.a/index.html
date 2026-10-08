@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartAthlete &mdash; NDMC Tryout & Selection System</link>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="landing.css">
+</head>
+<body class="landing-body">
+
+<main class="landing-main">
+
+  <div class="landing-hero">
+    <div class="landing-brand">
+      <img class="school-logo" src="logo.png" alt="Notre Dame of Midsayap College logo">
+      <div>
+        <strong>SmartAthlete</strong>
+        <span>Notre Dame of Midsayap College</span>
+      </div>
+    </div>
+    <h1>NDMC Tryout & Selection System</h1>
+    <p>Choose where you need to go. Students register for tryouts without an account; staff manage sports, athletes, scores, and the registration window from the protected admin area.</p>
+  </div>
+
+  <div class="landing-grid">
+
+    <a class="gate gate-student" href="register.html">
+      <span class="gate-mark">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </span>
+      <h2>Student Tryout Registration</h2>
+      <p>Register yourself or your esports team, see the tryout date and venue, and check your registration status.</p>
+      <span class="gate-go">Open registration page &rarr;</span>
+    </a>
+
+    <a class="gate gate-admin" href="login.html">
+      <span class="gate-mark">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </span>
+      <h2>Admin Login</h2>
+      <p>For staff only: sports roster, athlete registry, tryout evaluation, final selection, and registration settings. Includes a one-click demo.</p>
+      <span class="gate-go">Sign in to admin &rarr;</span>
+    </a>
+
+  </div>
+
+  <p class="landing-note">Both sides read and write the same tryout data, so a registration you submit online appears in the admin athlete list immediately.</p>
+
+</main>
+
+<footer class="landing-foot">
+  <p>SmartAthlete &middot; Notre Dame of Midsayap College &middot; Season <span id="seasonLabel">A.Y. 2026&ndash;2027</span></p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script src="common.js"></script>
+<script src="landing.js"></script>
+</body>
+</html>
