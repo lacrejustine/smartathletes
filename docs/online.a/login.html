@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login &mdash; SmartAthlete</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="register.css">
+<link rel="stylesheet" href="login.css">
+</head>
+<body class="student-body">
+
+<header class="brand-head">
+  <div class="brand-lockup">
+    <img class="school-logo" src="logo.png" alt="Notre Dame of Midsayap College logo">
+    <div>
+      <strong>SmartAthlete</strong>
+      <span>Admin Area</span>
+    </div>
+  </div>
+  <nav>
+    <a class="btn btn-ghost btn-sm" href="index.html">Home</a>
+  </nav>
+</header>
+
+<main class="student-main login-main">
+
+  <section class="panel login-panel">
+    <div class="login-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    </div>
+    <h1>Administrator sign in</h1>
+    <p class="sub">The admin area holds athlete records, tryout scores, and the registration window. Students do not need an account &mdash; they use the registration page.</p>
+
+    <form id="loginForm" class="login-form">
+      <div class="field">
+        <label for="loginUser">Username</label>
+        <input id="loginUser" type="text" autocomplete="username" autofocus>
+      </div>
+      <div class="field">
+        <label for="loginPass">Password</label>
+        <input id="loginPass" type="password" autocomplete="current-password">
+      </div>
+      <p class="login-error" id="loginError" hidden></p>
+      <button type="submit" class="btn btn-primary login-submit">Sign in</button>
+    </form>
+
+    <div class="login-divider" id="demoDivider"><span>or</span></div>
+
+    <div class="login-demo" id="demoBlock">
+      <button type="button" class="btn btn-secondary login-submit" id="btnDemo">Try Demo</button>
+      <p class="login-demo-note">Explore the admin dashboard with sample data. No account needed.</p>
+    </div>
+
+    <p class="login-alt">Not an administrator? <a href="register.html">Go to student registration</a>.</p>
+
+    <p class="login-cred-hint">Admin credentials: <code id="credHint">admin / admin123</code></p>
+  </section>
+
+  <section class="panel security-note">
+    <div class="panel-head">
+      <div>
+        <h2>Before this goes online</h2>
+        <p class="panel-note">Deployment checklist</p>
+      </div>
+    </div>
+    <div class="security-body">
+      <p>This sign-in protects the admin pages from casual access only. The credentials live in <code>config.js</code> and the "session" is a flag in this browser's local storage, so anyone with access to the files or developer tools can get past it.</p>
+      <ul>
+        <li><b>Server-side authentication</b> &mdash; validate the login on a backend over HTTPS so the browser never receives or stores the password.</li>
+        <li><b>Hashed passwords</b> &mdash; store bcrypt, Argon2, or scrypt hashes on the server; never ship a plain-text password to the client.</li>
+        <li><b>Real sessions</b> &mdash; httpOnly + Secure + SameSite cookies or short-lived signed tokens, with rate limiting and lockout on repeated failures.</li>
+        <li><b>Per-user accounts</b> &mdash; separate logins and an audit trail for each staff member who touches the season.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="common.js"></script>
+<script src="config.js"></script>
+<script src="demo.js"></script>
+<script src="auth.js"></script>
+<script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartAthlete Admin &mdash; NDMC Tryout &amp; Selection System</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="frame">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="side">
+    <div class="side-head">
+      <img class="school-logo" src="logo.png" alt="Notre Dame of Midsayap College logo">
+      <div class="side-title">
+        <strong>SmartAthlete</strong>
+        <span>NDMC</span>
+      </div>
+    </div>
+
+    <nav class="side-nav" id="sideNav">
+      <button type="button" class="nav-item active" data-view="dashboard">
+        <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></svg></span>
+        <span class="nav-text">Admin Home</span>
+      </button>
+      <button type="button" class="nav-item" data-view="sports">
+        <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18M3.6 9h16.8M3.6 15h16.8"/></svg></span>
+        <span class="nav-text">Sports Roster</span>
+      </button>
+      <button type="button" class="nav-item" data-view="athletes">
+        <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.5"/><path d="M17 11l2 2 4-4"/></svg></span>
+        <span class="nav-text">Athletes</span>
+      </button>
+      <button type="button" class="nav-item" data-view="tryouts">
+        <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></span>
+        <span class="nav-text">Tryout Evaluation</span>
+      </button>
+      <button type="button" class="nav-item" data-view="selection">
+        <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10z"/><path d="M8.5 13.5 7 22l5-2.5L17 22l-1.5-8.5"/></svg></span>
+        <span class="nav-text">Final Selection</span>
+      </button>
+      <button type="button" class="nav-item" data-view="settings">
+        <span class="nav-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 9 19.4a1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.6 9a1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg></span>
+        <span class="nav-text">Registration Settings</span>
+      </button>
+    </nav>
+
+    <div class="side-foot">
+      <p class="side-user" id="sideUser">Signed in</p>
+      <span class="demo-badge" id="demoBadge" hidden>DEMO MODE</span>
+      <div class="btn-row side-foot-actions">
+        <a class="btn btn-ghost btn-sm" href="register.html" target="_blank" rel="noopener">View student page</a>
+        <button type="button" class="btn btn-ghost btn-sm" id="btnExitDemo" hidden>Exit Demo</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="btnLogout">Log out</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN COLUMN ============ -->
+  <div class="main-wrap">
+
+    <!-- ---------- TOP BAR ---------- -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <div class="season-select">
+          <span class="season-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg></span>
+          <span class="season-value" id="seasonLabel">A.Y. 2026&ndash;2027</span>
+          <span class="season-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <button type="button" class="user-chip" aria-label="Signed in user">
+          <span class="avatar" aria-hidden="true">CA</span>
+          <span class="user-chip-text">
+            <strong>Coach Admin</strong>
+            <span>Administrator</span>
+          </span>
+          <span class="user-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+        </button>
+      </div>
+    </header>
+
+    <main class="main">
+
+      <!-- ---------- DASHBOARD ---------- -->
+      <section class="view active" id="view-dashboard">
+        <header class="view-head">
+          <div class="view-head-text">
+            <h1>Admin Home</h1>
+            <p class="sub">Registrations come in from the student page. Monitor the season, review who has joined each sport, and set the tryout window.</p>
+          </div>
+          <div class="head-banner" aria-hidden="true">
+            <span class="head-banner-pills">DISCIPLINE <i>/</i> SKILL <i>/</i> FITNESS <i>/</i> GAME SENSE</span>
+            <span class="head-banner-tag">BUILDING TOMORROW&rsquo;S CHAMPIONS</span>
+          </div>
+        </header>
+
+        <div class="demo-banner" id="demoBanner" hidden aria-live="polite">
+          <strong>DEMO MODE</strong>
+          <span>You&rsquo;re viewing sample data. Changes are not saved permanently.</span>
+        </div>
+
+        <div class="reg-status" id="regStatus" aria-live="polite"><!-- registration window injected --></div>
+
+        <div class="score-row" id="scoreRow"><!-- stat tiles injected --></div>
+
+        <div class="board-grid">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Athletes per sport</h2>
+                <p class="panel-note">Registered, not necessarily evaluated</p>
+              </div>
+            </div>
+            <div id="perSportBars" class="bars"></div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Selection outcomes</h2>
+                <p class="panel-note">All evaluations logged this season</p>
+              </div>
+            </div>
+            <div id="outcomeBreakdown" class="outcome-list"></div>
+          </div>
+        </div>
+
+        <section class="home-reg">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Tryout schedule</h2>
+                <p class="panel-note">Published to the student registration page.</p>
+              </div>
+              <button type="button" class="btn btn-ghost btn-sm" id="btnEditSettings">Manage settings</button>
+            </div>
+            <div id="tryoutSchedule"></div>
+          </div>
+        </section>
+
+        <section class="home-rosters" aria-labelledby="rosterBoardTitle">
+          <div class="roster-section-head">
+            <h2 id="rosterBoardTitle">Students registered by sport</h2>
+            <p class="roster-section-sub">Each sport has its own live student list. Open a sport on the student page to see the full roster.</p>
+          </div>
+
+          <!-- ADDED: static status legend (no JavaScript) -->
+          <ul class="roster-legend" aria-label="Status colour legend">
+            <li><span class="rbadge rbadge--selected"><i class="rbadge-dot" aria-hidden="true"></i>Selected</span></li>
+            <li><span class="rbadge rbadge--pending"><i class="rbadge-dot" aria-hidden="true"></i>Pending</span></li>
+            <li><span class="rbadge rbadge--waitlisted"><i class="rbadge-dot" aria-hidden="true"></i>Waitlisted</span></li>
+            <li><span class="rbadge rbadge--notselected"><i class="rbadge-dot" aria-hidden="true"></i>Not Selected</span></li>
+          </ul>
+
+          <div class="sport-roster-grid" id="sportRosterBoard"><!-- injected --></div>
+        </section>
+      </section>
+
+      <!-- ---------- SPORTS ROSTER ---------- -->
+      <section class="view" id="view-sports">
+        <header class="view-head">
+          <div class="view-head-text">
+            <h1>Sports Roster</h1>
+            <p class="sub">Add, rename, or retire the sports this tryout cycle covers. Retiring a sport keeps its history but hides it from new registrations.</p>
+          </div>
+          <div class="view-head-aside">
+            <div class="head-banner" aria-hidden="true">
+              <span class="head-banner-pills">DISCIPLINE <i>/</i> SKILL <i>/</i> FITNESS <i>/</i> GAME SENSE</span>
+              <span class="head-banner-tag">BUILDING TOMORROW&rsquo;S CHAMPIONS</span>
+            </div>
+            <button type="button" class="btn btn-primary" id="btnAddSport">+ Add Sport</button>
+          </div>
+        </header>
+
+        <div class="filter-bar">
+          <input type="search" id="sportSearch" placeholder="Search sports&hellip;" aria-label="Search sports">
+          <select id="sportCategoryFilter" aria-label="Filter by category">
+            <option value="">All categories</option>
+            <option value="Team Sport">Team Sport</option>
+            <option value="Individual Sport">Individual Sport</option>
+            <option value="Combat Sport">Combat Sport</option>
+            <option value="Racket Sport">Racket Sport</option>
+            <option value="Track &amp; Field">Track &amp; Field</option>
+            <option value="Mind Sport">Mind Sport</option>
+            <option value="Esports">Esports</option>
+          </select>
+        </div>
+
+        <div class="tile-grid" id="sportGrid"><!-- sport tiles injected --></div>
+      </section>
+
+      <!-- ---------- ATHLETES ---------- -->
+      <section class="view" id="view-athletes">
+        <header class="view-head">
+          <div class="view-head-text">
+            <h1>Athletes</h1>
+            <p class="sub">Every registration from the student page, grouped by sport and listed A to Z. Edit details or change a status directly here.</p>
+          </div>
+          <div class="view-head-aside">
+            <div class="head-banner" aria-hidden="true">
+              <span class="head-banner-pills">DISCIPLINE <i>/</i> SKILL <i>/</i> FITNESS <i>/</i> GAME SENSE</span>
+              <span class="head-banner-tag">BUILDING TOMORROW&rsquo;S CHAMPIONS</span>
+            </div>
+            <a class="btn btn-secondary" href="register.html" target="_blank" rel="noopener">Open student page</a>
+          </div>
+        </header>
+
+        <div class="status-summary" id="statusSummary"><!-- counts injected --></div>
+
+        <div class="filter-bar toolbar-card">
+          <input type="search" id="athleteSearch" placeholder="Search by name, student number, or Facebook&hellip;" aria-label="Search athletes">
+          <select id="athleteSportFilter" aria-label="Filter by sport"><option value="">All sports</option></select>
+          <select id="athleteStatusFilter" aria-label="Filter by status"><option value="">All statuses</option></select>
+          <span class="toolbar-actions">
+            <button type="button" class="btn btn-danger" id="btnClearAllStudents">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/></svg>
+              Clear All Students
+            </button>
+          </span>
+        </div>
+
+        <div class="table-wrap table-scroll">
+          <table class="data-table athlete-table" id="athleteTable">
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Sport</th>
+                <th>Course / Year</th>
+                <th>Department</th>
+                <th>Contact</th>
+                <th>Facebook</th>
+                <th>Status</th>
+                <th>ID</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <p class="empty-note" id="athleteEmpty">No students registered yet. Registrations come in from the student page.</p>
+        </div>
+      </section>
+
+      <!-- ---------- TRYOUT EVALUATION ---------- -->
+      <section class="view" id="view-tryouts">
+        <header class="view-head">
+          <div class="view-head-text">
+            <h1>Tryout Evaluation</h1>
+            <p class="sub">Score every candidate on skill, fitness, game sense, and discipline. Scores are out of 25 each, 100 total.</p>
+          </div>
+          <div class="view-head-aside">
+            <div class="head-banner" aria-hidden="true">
+              <span class="head-banner-pills">DISCIPLINE <i>/</i> SKILL <i>/</i> FITNESS <i>/</i> GAME SENSE</span>
+              <span class="head-banner-tag">BUILDING TOMORROW&rsquo;S CHAMPIONS</span>
+            </div>
+            <button type="button" class="btn btn-primary" id="btnAddEval">+ Score an Athlete</button>
+          </div>
+        </header>
+
+        <!-- Verdict summary cards (click a card to filter the table) -->
+        <div class="verdict-cards" id="evalVerdictCards" role="group" aria-label="Verdict summary — click to filter"></div>
+
+        <div class="filter-bar eval-toolbar">
+          <input type="search" id="evalSearch" placeholder="Search evaluations&hellip;" aria-label="Search evaluations">
+          <select id="evalSportFilter" aria-label="Filter by sport"><option value="">All sports</option></select>
+          <select id="evalVerdictFilter" aria-label="Filter by verdict">
+            <option value="">All verdicts</option>
+            <option value="Pending">Pending</option>
+            <option value="Selected">Selected</option>
+            <option value="Waitlisted">Waitlisted</option>
+            <option value="Not Selected">Not Selected</option>
+          </select>
+          <span class="toolbar-actions">
+            <button type="button" class="btn btn-secondary" id="btnApplySuggested">Apply band verdicts</button>
+          </span>
+        </div>
+
+        <div class="verdict-legend" id="evalVerdictLegend">
+          <span class="verdict-legend-title">Skill band sets the verdict</span>
+          <span class="verdict-legend-item"><i class="dot dot-selected"></i>81&ndash;100% Selected as Player &rarr; Selected</span>
+          <span class="verdict-legend-item"><i class="dot dot-waitlisted"></i>51&ndash;80% Need Improvement &rarr; Waitlisted</span>
+          <span class="verdict-legend-item"><i class="dot dot-pending"></i>31&ndash;50% Need More Practice &rarr; Pending</span>
+          <span class="verdict-legend-item"><i class="dot dot-notselected"></i>under 31% Not Being Selected &rarr; Not Selected</span>
+          <span class="verdict-legend-note" id="verdictThresholdNote"></span>
+          <span class="verdict-legend-note">Change the boundaries in Registration Settings. A verdict you set by hand is never overwritten by &ldquo;Apply band verdicts&rdquo;.</span>
+        </div>
+
+        <div class="eval-layout">
+          <div class="eval-main">
+            <div class="table-wrap">
+              <table class="data-table" id="evalTable">
+                <thead>
+                  <tr>
+                    <th>Athlete</th>
+                    <th>Sport</th>
+                    <th>Skill</th>
+                    <th>Fitness</th>
+                    <th>Game Sense</th>
+                    <th>Discipline</th>
+                    <th>Total</th>
+                    <th>Verdict</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+              <p class="empty-note" id="evalEmpty">No evaluations recorded yet.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- FINAL SELECTION ---------- -->
+      <section class="view" id="view-selection">
+        <header class="view-head">
+          <div class="view-head-text">
+            <h1>Final Selection</h1>
+            <p class="sub">Confirm rosters. A verdict here decides who represents NDMC this season.</p>
+          </div>
+          <div class="view-head-aside">
+            <div class="head-banner" aria-hidden="true">
+              <span class="head-banner-pills">DISCIPLINE <i>/</i> SKILL <i>/</i> FITNESS <i>/</i> GAME SENSE</span>
+              <span class="head-banner-tag">BUILDING TOMORROW&rsquo;S CHAMPIONS</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="panel publish-panel">
+          <label class="switch-row" for="publishResults">
+            <input type="checkbox" id="publishResults">
+            <span>Publish results to students</span>
+          </label>
+          <p class="field-hint" id="publishHint">While this is off, students checking their registration only ever see &ldquo;Pending&rdquo; &mdash; scores, verdicts, and remarks stay private.</p>
+        </div>
+
+        <div class="filter-bar">
+          <select id="selectionSportFilter" aria-label="Choose a sport, or view all sports together"><option value="">All sports</option></select>
+        </div>
+
+        <div id="selectionBoard" class="selection-board">
+          <p class="empty-note">Loading the selection board&hellip;</p>
+        </div>
+      </section>
+
+      <!-- ---------- REGISTRATION SETTINGS ---------- -->
+      <section class="view" id="view-settings">
+        <header class="view-head">
+          <div class="view-head-text">
+            <h1>Registration Settings</h1>
+            <p class="sub">Decide when online registration opens and closes, and publish the tryout date and venue so athletes know where to report.</p>
+          </div>
+          <div class="view-head-aside">
+            <div class="head-banner" aria-hidden="true">
+              <span class="head-banner-pills">DISCIPLINE <i>/</i> SKILL <i>/</i> FITNESS <i>/</i> GAME SENSE</span>
+              <span class="head-banner-tag">BUILDING TOMORROW&rsquo;S CHAMPIONS</span>
+            </div>
+          </div>
+        </header>
+
+        <div class="settings-status-row">
+          <div class="status-chip-live" id="settingsLiveChip">
+            <span class="chip-dot" id="settingsChipDot"></span>
+            <span id="settingsChipText">Registration status</span>
+          </div>
+          <span class="countdown-chip" id="settingsCountdown" aria-live="off">&mdash;</span>
+          <span class="settings-updated" id="settingsUpdatedAt">Last updated: &mdash;</span>
+        </div>
+
+        <div class="reg-status" id="settingsStatus" aria-live="polite"><!-- current state injected --></div>
+
+        <div class="settings-layout">
+        <div class="stack">
+          <!-- ---------- REGISTRATION WINDOW + SCHEDULE ---------- -->
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Registration deadline</h2>
+                <p class="panel-note">The student form reads these. Registration locks automatically once the cutoff passes, and is re-checked when a form is submitted.</p>
+              </div>
+            </div>
+
+            <div class="settings-body">
+              <div class="field-row">
+                <div class="field">
+                  <label for="setOpenAt">Registration opens (optional)</label>
+                  <input id="setOpenAt" type="datetime-local">
+                </div>
+                <div class="field">
+                  <label for="setCutoff">Registration cutoff (timeout)</label>
+                  <input id="setCutoff" type="datetime-local">
+                </div>
+              </div>
+
+              <label class="switch-row" for="setManualClose">
+                <input type="checkbox" id="setManualClose">
+                <span>Manually close online registration now</span>
+              </label>
+
+              <h3 class="settings-subhead">Tryout Venue and Schedule</h3>
+              <p class="field-hint" style="margin-bottom: 16px;">Pick a sport, then set when and where its tryout happens. The year is filled in for you.</p>
+
+              <div class="field">
+                <label for="setScheduleSport">Sport</label>
+                <select id="setScheduleSport">
+                  <option value="">All sports (general schedule)</option>
+                </select>
+                <span class="field-hint" id="setScheduleSportHint">This is the fallback schedule used when a sport has no override below.</span>
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="setTryoutDate">Tryout date</label>
+                  <input id="setTryoutDate" type="date">
+                </div>
+                <div class="field">
+                  <label for="setTryoutTime">Tryout time</label>
+                  <input id="setTryoutTime" type="time">
+                </div>
+              </div>
+              <div class="field">
+                <label for="setTryoutVenue">Venue / location</label>
+                <input id="setTryoutVenue" type="text" placeholder="e.g. NDMC Main Gymnasium, Covered Court">
+              </div>
+              <div class="field">
+                <label for="setTryoutNote">Note (optional)</label>
+                <textarea id="setTryoutNote" placeholder="e.g. Bring your intramurals ID and proper sports attire."></textarea>
+              </div>
+              <p class="field-hint">The tryout date must fall after the registration cutoff.</p>
+            </div>
+          </div>
+
+          <!-- ---------- PER-SPORT SCHEDULE ---------- -->
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Per-sport Schedule</h2>
+                <p class="panel-note">Leave a field blank to fall back to the general schedule above.</p>
+              </div>
+            </div>
+            <div class="ov-table" id="perSportSchedule"></div>
+          </div>
+
+          <!-- ---------- PUBLISH TRYOUT INFORMATION ---------- -->
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Publish Tryout Information</h2>
+                <p class="panel-note">When you publish, the tryout schedule will be pushed to all students registered for the selected sport.</p>
+              </div>
+            </div>
+            <div class="settings-body">
+              <div id="publishScheduleSection">
+                <div class="field">
+                  <label for="setScheduleSport">Sport <span class="req-mark">required</span></label>
+                  <select id="setScheduleSport">
+                    <option value="">Select a sport...</option>
+                  </select>
+                </div>
+
+                <div class="field-row">
+                  <div class="field">
+                    <label for="setTryoutDate">Tryout Date <span class="req-mark">required</span></label>
+                    <input id="setTryoutDate" type="date">
+                  </div>
+                  <div class="field">
+                    <label for="setTryoutTime">Tryout Time <span class="req-mark">required</span></label>
+                    <input id="setTryoutTime" type="time">
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="setTryoutVenue">Venue / Location <span class="req-mark">required</span></label>
+                  <input id="setTryoutVenue" type="text" placeholder="e.g. NDMC Main Gymnasium, Covered Court">
+                </div>
+
+                <div class="field">
+                  <label for="setTryoutNote">Note / What to Bring (optional)</label>
+                  <textarea id="setTryoutNote" placeholder="e.g. Bring your school ID, registration reference, proper sports attire, and water bottle."></textarea>
+                </div>
+
+                <div class="publish-summary" id="publishSummary" hidden>
+                  <span class="publish-count">Registered students: <strong id="publishStudentCount">0</strong></span>
+                </div>
+
+                <div class="publish-actions">
+                  <button type="button" class="btn btn-primary" id="btnPublishSchedule">UPDATE REGISTERED STUDENTS</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ---------- VERDICT THRESHOLDS ---------- -->
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2>Skill bands &amp; verdicts</h2>
+                <p class="panel-note">These boundaries define both the Skill Band column and the verdict it sets automatically. A verdict a coach picks by hand is never overwritten.</p>
+              </div>
+            </div>
+            <div class="settings-body">
+              <div class="settings-band-grid">
+                <div class="field">
+                  <label for="setThresholdSelected">Selected as Player &mdash; from</label>
+                  <input id="setThresholdSelected" type="number" min="3" max="100" step="1">
+                  <span class="field-hint">81% and up &rarr; verdict <b>Selected</b>.</span>
+                </div>
+                <div class="field">
+                  <label for="setThresholdWaitlisted">Need Improvement &mdash; from</label>
+                  <input id="setThresholdWaitlisted" type="number" min="2" max="99" step="1">
+                  <span class="field-hint">51% and up &rarr; verdict <b>Waitlisted</b>.</span>
+                </div>
+                <div class="field">
+                  <label for="setThresholdPractice">Need More Practice &mdash; from</label>
+                  <input id="setThresholdPractice" type="number" min="1" max="98" step="1">
+                  <span class="field-hint">31% and up &rarr; verdict <b>Pending</b>. Below that &rarr; <b>Not Selected</b>.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---------- LIVE PREVIEW ---------- -->
+        <aside class="settings-preview" aria-labelledby="previewTitle">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2 id="previewTitle">Student preview</h2>
+                <p class="panel-note">Live — updates as you type</p>
+              </div>
+            </div>
+            <div class="preview-phone">
+              <div class="preview-bar" id="previewBar"><span class="chip-dot"></span><span id="previewState">Registration open</span></div>
+              <div class="preview-body" id="previewBody"><!-- injected --></div>
+            </div>
+            <p class="preview-note">This is the unsaved draft. Press <b>Save Changes</b> to publish it to the student page.</p>
+          </div>
+        </aside>
+        </div>
+
+        <div class="settings-savebar">
+          <label class="switch-row autosave-row" for="setAutoSave">
+            <input type="checkbox" id="setAutoSave">
+            <span>Save changes automatically</span>
+          </label>
+          <span class="save-status" id="saveStatus" aria-live="polite">All changes saved</span>
+          <span class="toolbar-actions">
+            <button type="button" class="btn btn-ghost" id="setCancel">Discard changes</button>
+            <button type="button" class="btn btn-primary" id="setSave">Save Changes</button>
+          </span>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- ============ MODAL ============ -->
+<div class="modal-veil" id="modalVeil">
+  <div class="modal" id="modalBox"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="common.js"></script>
+<script src="idphoto.js"></script>
+<script src="config.js"></script>
+<script src="demo.js"></script>
+<script src="auth.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

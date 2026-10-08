@@ -1,0 +1,39 @@
+Occurrence 1:
+onst waitlistedCount = rows.filter(r => SA.statusOf(r.athlete) === "Waitlisted").length;
+    const registeredCount = SA.athletes.length;
+
+    if (!rows.length){
+      board.innerHTML = `
+        <div class="summary-row">
+          <div class="summary-chip"><strong>${SA.activeSports().length}</
+---
+Occurrence 2:
+tion first, or pick a single sport above to review just that roster.</p>`;
+      return;
+    }
+
+    const generalLine = SA.scheduleSummary(SA.scheduleFor(null));
+
+    board.innerHTML = `
+      <div class="summary-row">
+        <div class="summary-chip"><strong>${selectedCount}</strong>curren
+---
+Occurrence 3:
+st registeredCount = SA.athletesFor(sportId).length;
+    const selectionSchedule = SA.scheduleLine(SA.scheduleFor(sportId), sport.name);
+
+    if (!list.length){
+      board.innerHTML = `
+        <div class="summary-row">
+          <div class="summary-chip"><strong>${registeredCount}</strong>re
+---
+Occurrence 4:
+""}
+        <p class="empty-note">No evaluations logged for ${escapeHtml(sport.name)} yet. Score athletes under Tryout Evaluation first.</p>`;
+      return;
+    }
+
+    board.innerHTML = `
+      <div class="summary-row">
+        <div class="summary-chip"><strong>${selectedCount}</strong>curren
+---
